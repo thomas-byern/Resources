@@ -36,7 +36,7 @@ A quick reference to available resources. Updated as new articles are published.
 
 | Topic | Description | Article |
 |-------|-------------|---------|
-| `technical-debt/` | Mini-ADR templates, folklore detection checklists, debt triage agendas | [Technical debt isn't just code, it's lost context](https://authorial.org/byern/technical-debt-isnt-just-code-its-lost-context) |
+| `technical-debt-isnt-just-code/` | Mini-ADR templates, folklore detection checklists, debt triage agendas | [Technical debt isn't just code, it's lost context](https://authorial.org/byern/technical-debt-isnt-just-code-its-lost-context) |
 | *More coming soon...* | | |
 
 ---
