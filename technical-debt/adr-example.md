@@ -1,22 +1,61 @@
-# ADR: Use polling instead of webhooks for payment status updates
+# ADR-0012: Migrate User Auth to OAuth 2.0 with PKCE
 
-**Date:** 2025-09-15 \
-**Status:** Accepted \
-**Context:** We need to track payment status from our payment processor. 
-They offer both webhook notifications and a status polling API.
+**Status:** Accepted  \
+**Date:** 2025-06-14  \
+**Author(s):** @jchen, @mlopez  \
+**Tags:** #auth #security #api
 
-**Decision:** Use polling on a 30-second interval rather than webhooks.
+---
 
-**Rationale:** Our current infrastructure doesn't have a reliable way to 
-handle webhook delivery failures and retries. Building that properly is 
-estimated at 3 weeks. Polling is less efficient but works reliably with 
-our current setup. Payment status updates are not time-critical for our 
-use case (batch processing runs hourly).
+## Context
 
-**Alternatives considered:**
-- Webhooks with basic retry: Rejected due to risk of missed updates
-- Third-party webhook relay service: Adds external dependency, cost unclear
-- Build proper webhook infrastructure: Correct long-term, but delays launch
+Our current session-based authentication relies on server-side cookies and a custom token scheme introduced in 2019. This approach has led to:
 
-**Consequences:** Higher API usage, slight increase in processing latency. 
-Should revisit when we build event infrastructure (tentatively Q2 2026).
+- Frequent token-refresh bugs on mobile clients
+- Inability to support third-party integrations securely
+- Recurring security audit findings around token storage
+
+The platform team has flagged this as a blocker for the upcoming partner API launch (Q3 target).
+
+---
+
+## Decision
+
+We will migrate to **OAuth 2.0 with PKCE** (Proof Key for Code Exchange) for all client authentication, using our existing identity provider (Okta) as the authorization server.
+
+Key implementation points:
+- PKCE flow for all public clients (mobile, SPA)
+- Short-lived access tokens (15 min), refresh tokens (7 days, rotating)
+- Deprecate legacy `/auth/token` endpoint by 2025-09-01
+
+---
+
+## Alternatives Considered
+
+| Option                         | Why Not Chosen                                      |
+|--------------------------------|-----------------------------------------------------|
+| Keep current custom tokens     | Security risks; blocks partner integrations         |
+| OAuth 2.0 without PKCE         | Vulnerable to authorization code interception       |
+| Switch to passwordless (WebAuthn) | Higher implementation cost; deferred to Phase 2   |
+
+---
+
+## Consequences
+
+**Positive:**
+- Aligns with industry security standards
+- Enables secure third-party API access
+- Reduces token-related support tickets
+
+**Negative/Risks:**
+- Migration requires client-side changes (mobile app release cycle)
+- Legacy integrations need deprecation communication
+- Short-term increase in auth-related support load during rollout
+
+---
+
+## References
+
+- [OAuth 2.0 for Mobile & Native Apps (RFC 8252)](https://datatracker.ietf.org/doc/html/rfc8252)
+- Internal: `docs/security/token-handling.md`
+- Slack thread: #platform-auth, 2025-06-10
