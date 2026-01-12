@@ -6,7 +6,7 @@
 
 # ADR: [Short descriptive title]
 
-**Date:** YYYY-MM-DD  \
+**Date:** YYYY-MM-DD  
 **Status:** Accepted | Superseded | Deprecated
 
 ## Context
