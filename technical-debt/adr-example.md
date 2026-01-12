@@ -2,7 +2,7 @@
 
 **Status:** Accepted  \
 **Date:** 2025-06-14  \
-**Author(s):** @jchen, @mlopez  \
+**Author(s):** @jkovalsky, @mnovak  \
 **Tags:** #auth #security #api
 
 ---
