@@ -26,11 +26,6 @@ Templates and checklists for capturing decisions, detecting tribal knowledge, an
 | `debt-triage-agenda-full.md` | Detailed agenda with facilitation notes |
 | `debt-triage-agenda-minimal.md` | Bare-bones version for experienced teams |
 
-### Printables
-| File | Description |
-|------|-------------|
-| `printable-adr-and-checklist.html` | Print-friendly PDF version (open in browser, print to PDF) |
-
 ---
 
 ## Usage
