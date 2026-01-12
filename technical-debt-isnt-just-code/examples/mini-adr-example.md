@@ -1,4 +1,4 @@
-# ADR-0012: Migrate User Auth to OAuth 2.0 with PKCE
+# ADR-0012: Migrate user auth to OAuth 2.0 with PKCE
 
 **Status:** Accepted  \
 **Date:** 2025-06-14  \
