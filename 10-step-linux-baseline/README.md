@@ -6,7 +6,7 @@
 
 ## What's here
 
-Templates and checklists for capturing decisions, detecting tribal knowledge, and running effective debt reviews.
+Snippets wrapping the initialization process into a single script.
 
 ### 10-step all-in-one scripts
 | File | Description |
