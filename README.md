@@ -37,6 +37,7 @@ A quick reference to available resources. Updated as new articles are published.
 | Topic | Description | Article |
 |-------|-------------|---------|
 | `technical-debt-isnt-just-code/` | Mini-ADR templates, folklore detection checklists, debt triage agendas | [Technical debt isn't just code, it's lost context](https://authorial.org/byern/technical-debt-isnt-just-code-its-lost-context) |
+| `10-step-linux-baseline/` | Snippets wrapping the entire 10-step initialization process into a single bash script | [The first hour: My 10-step Linux baseline for every homelab machine](https://authorial.org/byern/10-step-linux-baseline) |
 | *More coming soon...* | | |
 
 ---
